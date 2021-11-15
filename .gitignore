@@ -1,6 +1,2 @@
-
-# Created by https://www.toptal.com/developers/gitignore/api/macos,windows,laravel
-# Edit at https://www.toptal.com/developers/gitignore?templates=macos,windows,laravel
-
 ### Laravel ###
-/vendor/
+/vendor

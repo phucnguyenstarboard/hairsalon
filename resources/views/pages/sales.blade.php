@@ -163,7 +163,7 @@
     </div>
     </div>
 <div class="pagination-container">
-                <div>{{ $list_sales->appends(request()->input())->links() }}</div>
+                <div>{{ $list_sales->appends(request()->input())->links('vendor.pagination.custom') }}</div>
             </div>
         @endif
         

@@ -79,7 +79,7 @@
             </div>
             </div>
             <div class="pagination-container">
-                <div>{{ $list_course->appends(['course_p' => $list_course->currentPage(), 'option_p' => $list_option->currentPage()])->links() }}</div>
+                <div>{{ $list_course->appends(['course_p' => $list_course->currentPage(), 'option_p' => $list_option->currentPage()])->links('vendor.pagination.custom') }}</div>
             </div>
             @endif
         </div>
@@ -138,7 +138,7 @@
             </div>
             </div>
             <div class="pagination-container">
-                <div>{{ $list_option->appends(['course_p' => $list_course->currentPage(), 'option_p' => $list_option->currentPage()])->links() }}</div>
+                <div>{{ $list_option->appends(['course_p' => $list_course->currentPage(), 'option_p' => $list_option->currentPage()])->links('vendor.pagination.custom') }}</div>
             </div>
             @endif
         </div>

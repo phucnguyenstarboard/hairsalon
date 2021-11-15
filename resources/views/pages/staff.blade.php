@@ -62,7 +62,7 @@
             </div>
             </div>
             <div class="pagination-container">
-                <div>{{ $list_staff->links() }}</div>
+                <div>{{ $list_staff->links('vendor.pagination.custom') }}</div>
             </div>
         @endif
     </div>
