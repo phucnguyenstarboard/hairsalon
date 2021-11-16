@@ -113,8 +113,9 @@ class CustomerController extends Controller
             )
             ->get();
         
-            echo json_encode($list_customer);
-            die;
+            // echo json_encode($list_customer);
+            // die;
+            return response()->json(['list_customer' => $list_customer]);
         }
         else if ($request->type == 'update'){
 

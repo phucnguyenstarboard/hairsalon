@@ -125,7 +125,9 @@ $( document ).ready(function() {
     var arrData =  null;
     var index = 0;   
     $('#btnSearch').click(function(e){
+        index = 0;   
         e.preventDefault(); 
+                         
         $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('#formSearch input[name="_token"]').val()
@@ -142,7 +144,7 @@ $( document ).ready(function() {
                 searchl_name: $('#searchl_name').val()
             },
             success: function(result){
-                arrData = result;    
+                arrData = result.list_customer;    
                 $("#page").html('1');      
                 $("#lblPaging").css("display", "none");
                 $("#divUpCancel").css("display", "none");
@@ -168,7 +170,8 @@ $( document ).ready(function() {
                     $("#c_text").removeAttr("readonly");    
                     if (arrData.length == 1){
                       $("#btnNext").attr("disabled","disabled");     
-                    }         
+                    }     
+                        
                 }  
                 else{
                     index = 0; 
@@ -191,6 +194,7 @@ $( document ).ready(function() {
         $("#c_lastname").removeClass("is-invalid");
         $("#messageErrorFirstname").css("display", "none");
         $("#c_firstname").removeClass("is-invalid");
+        
     });
 
     $('#btnCancelSearch').click(function(e){     
@@ -221,7 +225,9 @@ $( document ).ready(function() {
     });
 
     $('#btnNext').click(function(e){
+      
         index = index + 1;       
+       
         if ( index < arrData.length){
             $("#c_id").val(formatID(arrData[index].c_id.toString()));
             $("#c_firstname").val(arrData[index].c_firstname);
