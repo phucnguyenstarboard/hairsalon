@@ -70,7 +70,7 @@
                                 }
                             @endphp
                             <input type="hidden" id="save_s_c_id" name="save_s_c_id" value="{{ old('save_s_c_id', $c_id .' - '.$sales->Customer->c_lastname.' '.$sales->Customer->c_firstname) }}">
-                            {{-- <input type="hidden" id="hid_s_c_id" name="s_c_id" value="{{ old('s_c_id', $sales->Customer->c_id)}}" onchange="onCustomerChange({{ $list_customer }})"> --}}
+                             <input type="hidden" id="hid_s_c_id" name="s_c_id" value="{{ old('s_c_id', $sales->Customer->c_id)}}" > 
                             <input type="text" autocomplete="off" class="form-control {{ ($errors->first('s_c_id')) ? 'is-invalid'  :'' }}" id="input_s_c_id" name = "input_s_c_id" value="{{ old('input_s_c_id', $c_id .' - '.$sales->Customer->c_lastname.' '.$sales->Customer->c_firstname) }}">
                             <div id="countryList"></div>        
 
@@ -998,7 +998,7 @@
                         $('#countryList').html(data); 
                         $('#input_s_c_id').removeClass("is-invalid");
                         $('#save_s_c_id').val('');
-                        $('#hid_s_c_id').val('').trigger('change'); 
+                        $('#hid_s_c_id').val($(this).val()); 
                     }else{
                         $('#countryList').hide();                         
                         $("#listCustomerSearch").remove();
@@ -1018,7 +1018,7 @@
         
         if($("#save_s_c_id").val() != ''){
             if($('#save_s_c_id').val() != $("#input_s_c_id").val()){
-                $('#hid_s_c_id').val('').trigger('change'); 
+                $('#hid_s_c_id').val($(this).val()); 
                 $('#input_s_c_id').removeClass("is-invalid");
                 $flag = 0; 
             }else{
@@ -1048,7 +1048,7 @@
     });
 
     $("#countryList").on('click', 'li', function(){  
-        // $('#hid_s_c_id').val($(this).val()).trigger('change');  
+        $('#hid_s_c_id').val($(this).val());  
         $('#input_s_c_id').val($(this).text());  
         $('#input_s_c_id').removeClass("is-invalid");
         $("#listCustomerSearch").remove();

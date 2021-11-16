@@ -229,7 +229,7 @@ class SalesController extends Controller
                 }
             }
         }
-
+            
         $sales = new Sales($dataSales);
         $sales->save();
 
@@ -391,7 +391,7 @@ class SalesController extends Controller
             }
         }
 
-
+        
         $sales = Sales::find($id);
 
         $sales->s_c_id  = $dataSales['s_c_id'];
@@ -403,6 +403,7 @@ class SalesController extends Controller
         $sales->sale_date  = $dataSales['sale_date'];
         $sales->s_update  = $dataSales['s_update'];
 
+       
         $sales->save();
 
 
