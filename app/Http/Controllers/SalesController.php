@@ -1181,7 +1181,7 @@ class SalesController extends Controller
         $sheet->setCellValue('A26', chr(32));
 
         $writer = new Xlsx($spreadsheet);
-        $fileName = '集計出力_'.date('Ymd').'.xlsx';
+        $fileName = ' 集計出力_'.date('Ymd').'.xlsx';
         $writer->save($fileName);
         header('Content-Description: File Transfer');
         header('Content-Type: application/octet-stream');
@@ -1209,7 +1209,7 @@ class SalesController extends Controller
             $list_sales = Sales::where('s_del_flg', 0)->orderBy('s_id', 'DESC')->paginate(1000000);
         }
 
-        $filename = '会計出力_'.date('Ymd').'.csv';
+        $filename = ' 会計出力_'.date('Ymd').'.csv';
         $spreadsheet = new Spreadsheet();
         $writer = new Csv($spreadsheet);
         $writer->setUseBOM(true);
