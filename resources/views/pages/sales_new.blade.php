@@ -63,7 +63,7 @@
                                 <span class="input-group-text">顧客検索</span>
                             </div>
                             <input type="hidden" id="save_s_c_id" name="save_s_c_id" value="">
-                            <input type="hidden" id="hid_s_c_id" name="s_c_id" value="{{old('s_c_id')}}" onchange="onCustomerChange({{ $list_customer }})">
+                            {{-- <input type="hidden" id="hid_s_c_id" name="s_c_id" value="{{old('s_c_id')}}" onchange="onCustomerChange({{ $list_customer }})"> --}}
                             <input type="text" autocomplete="off" class="form-control {{ ($errors->first('s_c_id')) ? 'is-invalid'  :'' }}" id="input_s_c_id" name = "input_s_c_id" value="{{old('input_s_c_id')}}">
                             <div id="countryList"></div>
                             <div id="check_customer_list" class="invalid-feedback">
@@ -961,7 +961,10 @@
                 $("#listCustomerSearch").remove();
                 $("#save_s_c_id").val('');
         }  
-        }       
+        }    else{
+             $('input[name="txt_lastname"]').val('');
+                         $('input[name="txt_firstname"]').val('');
+        }   
     });
 
     $("#countryList").mouseover(function() {
@@ -973,12 +976,32 @@
     });
 
     $("#countryList").on('click', 'li', function(){  
-        $('#hid_s_c_id').val($(this).val()).trigger('change');  
+        // $('#hid_s_c_id').val($(this).val()).trigger('change');  
         $('#input_s_c_id').val($(this).text());  
         $('#input_s_c_id').removeClass("is-invalid");
         $("#listCustomerSearch").remove();
 
         $('#save_s_c_id').val($(this).text());
+
+
+        var _token = $('input[name="_token"]').val(); 
+            $.ajax({
+                    url:"{{ route('searchCustomerById') }}", 
+                    method:"POST", 
+                    data:{c_id:$(this).val(), _token:_token},
+                    success:function(responsive){ 
+                    if(responsive != ''){
+                        $('input[name="txt_lastname"]').val(responsive.lname);
+                        $('input[name="txt_firstname"]').val(responsive.fname);
+                    }else{
+                        $('input[name="txt_lastname"]').val('');
+                         $('input[name="txt_firstname"]').val('');
+                    }
+
+                                             
+            }
+            });
+
     }); 
 
     $("#saleoff").change(function() {

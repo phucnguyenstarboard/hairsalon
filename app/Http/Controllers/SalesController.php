@@ -100,6 +100,12 @@ class SalesController extends Controller
         return view('pages.sales_new',compact('list_course','last_sales_id','list_customer','list_staff','list_option','currentTime'));
     }   
 
+    public function searchCustomerById(Request $request){
+        $c_id = $request->input('c_id');
+        $customer = Customer::find($c_id);
+        return response()->json(['fname' => $customer->c_firstname, 'lname' => $customer->c_lastname]);
+
+    }
     public function postSalesNew(Request $request) {
 
         $arrFieldValidate = array('s_c_id' => 'required', 's_co_id1' => 'required', 's_money_1' => 'required');
