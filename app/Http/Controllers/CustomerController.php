@@ -43,8 +43,8 @@ class CustomerController extends Controller
         }
 
         $validator = $request->validate([
-            'c_firstname'   => 'required',
-            'c_lastname'    => 'required',
+            'c_firstname'   => 'required|regex:/^[a-zA-Z]+$/u',
+            'c_lastname'    => 'required|regex:/^[a-zA-Z]+$/u',
         ], [
             'c_firstname.required'  => '入力してください。',
             'c_lastname.required'   => '入力してください。',
@@ -71,8 +71,8 @@ class CustomerController extends Controller
 
     public function postCustomerEdit(Request $request) {
         $request->validate([
-            'c_firstname'   => 'required',
-            'c_lastname'    => 'required',
+            'c_firstname'   => 'required|regex:/^[a-zA-Z]+$/u',
+            'c_lastname'    => 'required|regex:/^[a-zA-Z]+$/u',
         ], [
             'c_firstname.required'  => '入力してください。',
             'c_lastname.required'   => '入力してください。'
